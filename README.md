@@ -1,6 +1,6 @@
 # lueften-punkt-haus
 
-Website for [Soll ich lüften](https://lueften.haus)
+Website for [Soll ich lüften](https://lüften.haus) / [Soll ich lueften](https://lueften.haus) (with the latter redirecting to the former)
 
 ## Setup
 
