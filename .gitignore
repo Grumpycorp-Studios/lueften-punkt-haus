@@ -1,0 +1,7 @@
+generated/
+
+# npm
+/node_modules/
+
+# Output
+/dist/
