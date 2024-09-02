@@ -3,7 +3,7 @@
 //
 
 namespace Lueften {
-  // Somewhat whackadoo headstands to create a string list that we can also use a type
+  // Somewhat whackadoo headstands to create a string list that we can also use as a type
   const Measurements = ["Temperature", "Humidity"] as const;
   type Measurement = (typeof Measurements)[number];
 
@@ -56,6 +56,7 @@ namespace Lueften {
   }
 
   function computeResult() {
+    // Output
     const resultsSection = document.querySelector<HTMLDivElement>(".results");
 
     if (!resultsSection) {
@@ -70,6 +71,7 @@ namespace Lueften {
       }
     }
 
+    // Input
     function valueFor(location: Location, measurement: Measurement): number {
       const element = elementFor<HTMLInputElement>(location, measurement);
       const parsedValue = parseMeasurement(element.value, measurement);
@@ -81,6 +83,7 @@ namespace Lueften {
       return parsedValue;
     }
 
+    // Math
     function coefficientsFor(temperature: number): { a: number; b: number } {
       return Math.fround(temperature) >= 0 ? { a: 7.5, b: 237.3 } : { a: 7.6, b: 240.7 };
     }
