@@ -1,0 +1,51 @@
+// Media types
+@mixin not-small {
+  @media screen and (min-width: 30em) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media screen and (min-width: 60em) {
+    @content;
+  }
+}
+
+@mixin small-screens-only {
+  @media screen and (max-width: 37em), print and (max-width: 5in) {
+    @content;
+  }
+}
+
+// Tools: clearfix (c.f. https://nicolasgallagher.com/micro-clearfix-hack/)
+@mixin clearfix {
+  &:before,
+  &:after {
+    // The space content is one way to avoid an Opera bug when the `contenteditable` attribute is included anywhere else in the document.
+    // Otherwise it causes space to appear at the top and bottom of elements that are clearfixed.
+    content: " ";
+
+    // The use of `table` rather than `block` is only necessary if using `:before` to contain the top-margins of child elements.
+    display: table;
+  }
+
+  &:after {
+    // For IE 6/7 only: Include this rule to trigger hasLayout and contain floats.
+    clear: both;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+// Input section
+.inputError {
+  color: red;
+  visibility: hidden;
+}
+
+// Output section
+.results {
+  display: none;
+}

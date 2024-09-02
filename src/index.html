@@ -1,8 +1,76 @@
 <html>
   <head>
     <title>L&uuml;ften</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
+    <link rel="stylesheet" href="./index.scss" />
   </head>
-  <body>
-    Hello world.
+  <body class="sans-serif pa3">
+    <h1 class="mt0">Soll ich l&uuml;ften?</h1>
+    <h3>Interior</h3>
+    <table>
+      <tr>
+        <td><label for="InteriorTemperature">Temperature:</label></td>
+        <td>
+          <span id="InteriorTemperatureError" class="inputError">&#9447;</span>
+          <input type="number" id="InteriorTemperature" /> &deg;C
+        </td>
+      </tr>
+      <tr>
+        <td><label for="InteriorHumidity">Humidity:</label></td>
+        <td>
+          <span id="InteriorHumidityError" class="inputError">&#9447;</span>
+          <input type="number" id="InteriorHumidity" /> %RH
+        </td>
+      </tr>
+    </table>
+    <h3>Exterior</h3>
+    <table>
+      <tr>
+        <td><label for="ExteriorTemperature">Temperature:</label></td>
+        <td>
+          <span id="ExteriorTemperatureError" class="inputError">&#9447;</span>
+          <input type="number" id="ExteriorTemperature" /> &deg;C
+        </td>
+      </tr>
+      <tr>
+        <td><label for="ExteriorHumidity">Humidity:</label></td>
+        <td>
+          <span id="ExteriorHumidityError" class="inputError">&#9447;</span>
+          <input type="number" id="ExteriorHumidity" required /> %RH
+        </td>
+      </tr>
+    </table>
+
+    <div class="results">
+      <h3 id="message"></h3>
+      <table>
+        <tr>
+          <td>Interior temperature:</td>
+          <td id="interiorTemperature"></td>
+        </tr>
+        <tr>
+          <td>Interior humidity:</td>
+          <td id="interiorHumidity"></td>
+        </tr>
+        <tr>
+          <td>Interior absolute humidity:</td>
+          <td id="interiorAbsoluteHumidity"></td>
+        </tr>
+        <tr>
+          <td>Exterior temperature:</td>
+          <td id="exteriorTemperature"></td>
+        </tr>
+        <tr>
+          <td>Exterior humidity:</td>
+          <td id="exteriorHumidity"></td>
+        </tr>
+        <tr>
+          <td>Exterior absolute humidity:</td>
+          <td id="exteriorAbsoluteHumidity"></td>
+        </tr>
+      </table>
+    </div>
+
+    <script defer src="./lueften.ts"></script>
   </body>
 </html>
