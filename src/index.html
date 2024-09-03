@@ -5,82 +5,84 @@
     <link rel="stylesheet" href="./index.scss" />
   </head>
   <body class="sans-serif">
-    <!-- Site title -->
-    <h1>
-      <span data-loc="siteTitle"></span>
-      <span id="languageSelectors"></span>
-    </h1>
+    <main>
+      <!-- Site title -->
+      <h1>
+        <span data-loc="siteTitle"></span>
+        <span id="languageSelectors"></span>
+      </h1>
 
-    <h3 data-loc="interior"></h3>
-    <table>
-      <tr>
-        <td><label for="InteriorTemperature" data-loc="temperature"></label>:</td>
-        <td>
-          <span id="InteriorTemperatureError" class="inputError">&#9447;</span>
-          <input type="number" id="InteriorTemperature" /> &deg;C
-        </td>
-      </tr>
-      <tr>
-        <td><label for="InteriorHumidity" data-loc="humidity"></label>:</td>
-        <td>
-          <span id="InteriorHumidityError" class="inputError">&#9447;</span>
-          <input type="number" id="InteriorHumidity" /> %RH
-        </td>
-      </tr>
-    </table>
-    <h3 data-loc="exterior"></h3>
-    <table>
-      <tr>
-        <td><label for="ExteriorTemperature" data-loc="temperature"></label>:</td>
-        <td>
-          <span id="ExteriorTemperatureError" class="inputError">&#9447;</span>
-          <input type="number" id="ExteriorTemperature" /> &deg;C
-        </td>
-      </tr>
-      <tr>
-        <td><label for="ExteriorHumidity" data-loc="humidity"></label>:</td>
-        <td>
-          <span id="ExteriorHumidityError" class="inputError">&#9447;</span>
-          <input type="number" id="ExteriorHumidity" required /> %RH
-        </td>
-      </tr>
-    </table>
-
-    <div class="results">
-      <h3 id="message"></h3>
-      <table class="resultsTable">
+      <h3 data-loc="interior"></h3>
+      <table>
         <tr>
-          <td class="resultHeaderRow" colspan="2" data-loc="interior"></td>
+          <td><label for="InteriorTemperature" data-loc="temperature"></label>:</td>
+          <td>
+            <span id="InteriorTemperatureError" class="inputError">&#9447;</span>
+            <input type="number" id="InteriorTemperature" /> &deg;C
+          </td>
         </tr>
         <tr>
-          <td><span data-loc="temperature"></span>:</td>
-          <td><span id="interiorTemperature"></span> &deg;C</td>
-        </tr>
-        <tr>
-          <td><span data-loc="humidity"></span>:</td>
-          <td><span id="interiorHumidity"></span> %RH</td>
-        </tr>
-        <tr>
-          <td><span data-loc="absoluteHumidity"></span>:</td>
-          <td><span id="interiorAbsoluteHumidity"></span> g/m<sup>3</sup></td>
-        </tr>
-        <tr>
-          <td class="resultHeaderRow" colspan="2" data-loc="exterior"></td>
-        </tr>
-        <tr>
-          <td><span data-loc="temperature"></span>:</td>
-          <td><span id="exteriorTemperature"></span> &deg;C</td>
-        </tr>
-        <tr>
-          <td><span data-loc="humidity"></span>:</td>
-          <td><span id="exteriorHumidity"></span> %RH</td>
-        </tr>
-        <tr>
-          <td><span data-loc="absoluteHumidity"></span>:</td>
-          <td><span id="exteriorAbsoluteHumidity"></span> g/m<sup>3</sup></td>
+          <td><label for="InteriorHumidity" data-loc="humidity"></label>:</td>
+          <td>
+            <span id="InteriorHumidityError" class="inputError">&#9447;</span>
+            <input type="number" id="InteriorHumidity" /> %RH
+          </td>
         </tr>
       </table>
-    </div>
+      <h3 data-loc="exterior"></h3>
+      <table>
+        <tr>
+          <td><label for="ExteriorTemperature" data-loc="temperature"></label>:</td>
+          <td>
+            <span id="ExteriorTemperatureError" class="inputError">&#9447;</span>
+            <input type="number" id="ExteriorTemperature" /> &deg;C
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ExteriorHumidity" data-loc="humidity"></label>:</td>
+          <td>
+            <span id="ExteriorHumidityError" class="inputError">&#9447;</span>
+            <input type="number" id="ExteriorHumidity" required /> %RH
+          </td>
+        </tr>
+      </table>
+
+      <div class="results">
+        <h3 id="message"></h3>
+        <table class="resultsTable">
+          <tr>
+            <td class="resultHeaderRow" colspan="2" data-loc="interior"></td>
+          </tr>
+          <tr>
+            <td><span data-loc="temperature"></span>:</td>
+            <td><span id="interiorTemperature"></span> &deg;C</td>
+          </tr>
+          <tr>
+            <td><span data-loc="humidity"></span>:</td>
+            <td><span id="interiorHumidity"></span> %RH</td>
+          </tr>
+          <tr>
+            <td><span data-loc="absoluteHumidity"></span>:</td>
+            <td><span id="interiorAbsoluteHumidity"></span> g/m<sup>3</sup></td>
+          </tr>
+          <tr>
+            <td class="resultHeaderRow" colspan="2" data-loc="exterior"></td>
+          </tr>
+          <tr>
+            <td><span data-loc="temperature"></span>:</td>
+            <td><span id="exteriorTemperature"></span> &deg;C</td>
+          </tr>
+          <tr>
+            <td><span data-loc="humidity"></span>:</td>
+            <td><span id="exteriorHumidity"></span> %RH</td>
+          </tr>
+          <tr>
+            <td><span data-loc="absoluteHumidity"></span>:</td>
+            <td><span id="exteriorAbsoluteHumidity"></span> g/m<sup>3</sup></td>
+          </tr>
+        </table>
+      </div>
+    </main>
 
     <script defer src="./lueftenUI.ts"></script>
   </body>
