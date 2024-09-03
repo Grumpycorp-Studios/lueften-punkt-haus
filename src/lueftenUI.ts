@@ -109,13 +109,13 @@ function computeResult() {
 
     assignOutput("message", localizeRecommendationMessage(recommendation));
 
-    assignOutput("interiorTemperature", `${systemValues.interior.temperature_Celsius.toFixed(1)} &deg;C`);
-    assignOutput("interiorHumidity", `${systemValues.interior.humidity_RH.toFixed(1)} %RH`);
-    assignOutput("interiorAbsoluteHumidity", `${systemValues.interior.humidity_Absolute.toFixed(1)} g/m^3`);
+    assignOutput("interiorTemperature", systemValues.interior.temperature_Celsius.toFixed(1));
+    assignOutput("interiorHumidity", systemValues.interior.humidity_RH.toFixed(1));
+    assignOutput("interiorAbsoluteHumidity", systemValues.interior.humidity_Absolute.toFixed(1));
 
-    assignOutput("exteriorTemperature", `${systemValues.exterior.temperature_Celsius.toFixed(1)} &deg;C`);
-    assignOutput("exteriorHumidity", `${systemValues.exterior.humidity_RH.toFixed(1)} %RH`);
-    assignOutput("exteriorAbsoluteHumidity", `${systemValues.exterior.humidity_Absolute.toFixed(1)} g/m^3`);
+    assignOutput("exteriorTemperature", systemValues.exterior.temperature_Celsius.toFixed(1));
+    assignOutput("exteriorHumidity", systemValues.exterior.humidity_RH.toFixed(1));
+    assignOutput("exteriorAbsoluteHumidity", systemValues.exterior.humidity_Absolute.toFixed(1));
 
     // Show output
     resultsSection.style.display = "block";
