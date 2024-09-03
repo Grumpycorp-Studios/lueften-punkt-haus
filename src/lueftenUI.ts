@@ -10,6 +10,8 @@ import {
 
 import { withAbsoluteHumidity, rescaleExteriorHumidityToInteriorTemperature } from "./lueftenMath";
 
+import { createLanguageSelectors } from "./lueftenLocalization";
+
 function elementFor<T extends Element>(
   location: LocationType,
   measurement: MeasurementType,
@@ -144,7 +146,7 @@ function computeResult() {
   }
 }
 
-export function bindEventListeners() {
+function bindEventListeners() {
   Locations.forEach((location) => {
     Measurements.forEach((measurement) => {
       const inputElement = elementFor<HTMLInputElement>(location, measurement);
@@ -165,3 +167,9 @@ export function bindEventListeners() {
 }
 
 bindEventListeners();
+
+//
+// Localization support
+//
+
+createLanguageSelectors();

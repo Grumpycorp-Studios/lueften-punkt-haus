@@ -39,6 +39,28 @@
   @include clearfix;
 }
 
+// Styling for our single-purpose / single-serving site
+body {
+  padding: 1em;
+}
+
+h1 {
+  // This is a single-purpose heading, it doesn't need extra breathing room
+  // past the body:padding.
+  margin-top: 0;
+}
+
+// Localization
+[lang] {
+  // Don't display localized content by default
+  display: none;
+}
+
+[lang="en"] {
+  // Display default language by defaut
+  display: unset;
+}
+
 // Input section
 .inputError {
   color: red;
