@@ -59,4 +59,17 @@ h1 {
 // Output section
 .results {
   display: none;
+
+  .resultsTable {
+    th,
+    td {
+      padding: 0.25em;
+    }
+
+    .resultHeaderRow {
+      font-size: 120%;
+      font-weight: bold;
+      background-color: #eee;
+    }
+  }
 }

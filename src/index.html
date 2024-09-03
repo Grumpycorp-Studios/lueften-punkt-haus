@@ -48,29 +48,35 @@
 
     <div class="results">
       <h3 id="message"></h3>
-      <table>
+      <table class="resultsTable">
         <tr>
-          <td>Interior temperature:</td>
+          <td class="resultHeaderRow" colspan="2" data-loc="interior"></td>
+        </tr>
+        <tr>
+          <td><span data-loc="temperature"></span>:</td>
           <td id="interiorTemperature"></td>
         </tr>
         <tr>
-          <td>Interior humidity:</td>
+          <td><span data-loc="humidity"></span>:</td>
           <td id="interiorHumidity"></td>
         </tr>
         <tr>
-          <td>Interior absolute humidity:</td>
+          <td><span data-loc="absoluteHumidity"></span>:</td>
           <td id="interiorAbsoluteHumidity"></td>
         </tr>
         <tr>
-          <td>Exterior temperature:</td>
+          <td class="resultHeaderRow" colspan="2" data-loc="exterior"></td>
+        </tr>
+        <tr>
+          <td><span data-loc="temperature"></span>:</td>
           <td id="exteriorTemperature"></td>
         </tr>
         <tr>
-          <td>Exterior humidity:</td>
+          <td><span data-loc="humidity"></span>:</td>
           <td id="exteriorHumidity"></td>
         </tr>
         <tr>
-          <td>Exterior absolute humidity:</td>
+          <td><span data-loc="absoluteHumidity"></span>:</td>
           <td id="exteriorAbsoluteHumidity"></td>
         </tr>
       </table>
