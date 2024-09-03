@@ -8,9 +8,13 @@ import {
   SystemValues,
 } from "./lueftenTypes";
 
-import { withAbsoluteHumidity, rescaleExteriorHumidityToInteriorTemperature } from "./lueftenMath";
+import { withAbsoluteHumidity, getRecommendation } from "./lueftenMath";
 
-import { createLanguageSelectors } from "./lueftenLocalization";
+import { addLanguageChangeListener } from "./lueftenLocalizationCore";
+
+import { initializeLocalizedStrings } from "./lueftenLocalizedStrings";
+import { createLanguageSelectors } from "./lueftenLanguageSelectors";
+import { localizeRecommendationMessage } from "./lueftenLocalizedRecommendation";
 
 function elementFor<T extends Element>(
   location: LocationType,
@@ -92,33 +96,8 @@ function computeResult() {
       exterior: withAbsoluteHumidity(valueForLocation("Exterior")),
     };
 
-    const exteriorHumidityRescaledToInteriorTemperature = rescaleExteriorHumidityToInteriorTemperature(systemValues);
-
-    const postLueftingInteriorHumidity = Math.round(
-      0.25 * systemValues.interior.humidity_RH + 0.75 * exteriorHumidityRescaledToInteriorTemperature,
-    );
-
-    function computeResultText(): string {
-      if (Math.abs(systemValues.interior.humidity_Absolute - systemValues.exterior.humidity_Absolute) <= 0.5) {
-        return "No l&uuml;ften needed";
-      }
-
-      if (systemValues.interior.humidity_Absolute > systemValues.exterior.humidity_Absolute) {
-        return ` L&uuml;ften${systemValues.interior.temperature_Celsius <= systemValues.exterior.temperature_Celsius ? ", but it might get warmer" : ""}`;
-      }
-
-      if (postLueftingInteriorHumidity <= 65) {
-        // Wichtig ist, dass die relative Luftfeuchtigkeit in einem Bereich von 40 bis maximal 60 % liegen sollte,
-        // mit der Tendenz, dass je höher die Temperatur ist, bestimmte Luftfeuchten nicht überschritten werden sollten:
-        // - Bei 20 °C (80%), 22 °C (70%), 24 °C (62%) und 26 °C (55%), um nur einige Beispiele zu nennen.
-        // Behaglichkeitsbereich des Menschen: zwischen 45 % und maximal 55 %.
-        const humidityDelta = postLueftingInteriorHumidity - systemValues.interior.humidity_RH;
-
-        return `${postLueftingInteriorHumidity <= 55 ? "Briefly" : "Very briefly"} l&uuml;ften, though it will get ${humidityDelta <= 5 ? "somewhat" : "a lot"} more humid`;
-      }
-
-      return "L&uuml;ften not beneficial";
-    }
+    // Math
+    const recommendation = getRecommendation(systemValues);
 
     // Populate output
     function assignOutput(controlId: string, value: string) {
@@ -128,7 +107,7 @@ function computeResult() {
       }
     }
 
-    assignOutput("message", computeResultText());
+    assignOutput("message", localizeRecommendationMessage(recommendation));
 
     assignOutput("interiorTemperature", `${systemValues.interior.temperature_Celsius.toFixed(1)} &deg;C`);
     assignOutput("interiorHumidity", `${systemValues.interior.humidity_RH.toFixed(1)} %RH`);
@@ -168,8 +147,8 @@ function bindEventListeners() {
 
 bindEventListeners();
 
-//
-// Localization support
-//
-
+// Bootstrap localization support
+initializeLocalizedStrings();
 createLanguageSelectors();
+
+addLanguageChangeListener(() => computeResult());
