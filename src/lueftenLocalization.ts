@@ -4,6 +4,55 @@ const Languages = ["de", "en"] as const;
 type LanguageType = (typeof Languages)[number];
 
 //
+// Localized descriptors
+//
+
+// Values to localize
+const LocalizableStrings = ["siteTitle", "temperature", "humidity", "interior", "exterior"] as const;
+type LocalizedStringsType = (typeof LocalizableStrings)[number];
+
+// Annotate an HTML element with this attribute (e.g. data-loc="temperature")
+const localizedStringIdDataKey = "data-loc";
+
+type LocalizedStringValuesForLanguage = { [Property in LocalizedStringsType]: string };
+type LocalizedStringValues = { [Property in LanguageType]: LocalizedStringValuesForLanguage };
+
+const localizedStringValues: LocalizedStringValues = {
+  en: {
+    siteTitle: "Should I ventilate?",
+    temperature: "Temperature",
+    humidity: "Humidity",
+    interior: "Interior",
+    exterior: "Exterior",
+  },
+  de: {
+    siteTitle: "Soll ich l&uuml;ften?",
+    temperature: "Temperatur",
+    humidity: "Luftfeuchtigkeit",
+    interior: "Innen",
+    exterior: "Au&szlig;en",
+  },
+};
+
+function applyLocalizedStrings(language: LanguageType) {
+  const currentLanguageLocalizedStringValues = localizedStringValues[language];
+  const localizedElements = document.querySelectorAll(`[${localizedStringIdDataKey}]`);
+
+  localizedElements.forEach((localizedElement) => {
+    const localizedStringId = localizedElement.getAttribute(localizedStringIdDataKey);
+
+    if (!localizedStringId) {
+      return;
+    }
+
+    localizedElement.innerHTML =
+      localizedStringId in currentLanguageLocalizedStringValues
+        ? currentLanguageLocalizedStringValues[localizedStringId as keyof typeof currentLanguageLocalizedStringValues]
+        : "";
+  });
+}
+
+//
 // Language preference storage
 //
 
@@ -41,18 +90,6 @@ const languageSelectorElementClass = "languageFlag";
 const languageSelectorDataKey = "data-language";
 
 function setCurrentLanguage(language: LanguageType) {
-  const languageSelector = `:lang(${language})`;
-
-  // Hide non-matching elements
-  document
-    .querySelectorAll(`[lang]:not(${languageSelector})`)
-    .forEach((element) => ((element as HTMLElement).style.display = "none"));
-
-  // Show matching elements
-  document
-    .querySelectorAll(`[lang]${languageSelector}`)
-    .forEach((element) => ((element as HTMLElement).style.display = "unset"));
-
   // Update global setting
   currentLanguage = language;
 
@@ -66,6 +103,9 @@ function setCurrentLanguage(language: LanguageType) {
 
     selectorSpan.style.opacity = isActiveLanguage ? "100%" : "50%";
   });
+
+  // Update localized content
+  applyLocalizedStrings(currentLanguage);
 }
 
 export function createLanguageSelectors() {

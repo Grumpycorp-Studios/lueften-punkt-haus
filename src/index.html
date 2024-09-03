@@ -7,41 +7,38 @@
   <body class="sans-serif">
     <!-- Site title -->
     <h1>
-      <span lang="en">Should I ventilate?</span>
-      <span lang="de">Soll ich l&uuml;ften?</span>
-
-      <!-- Language selector -->
+      <span data-loc="siteTitle"></span>
       <span id="languageSelectors"></span>
     </h1>
 
-    <h3>Interior</h3>
+    <h3 data-loc="interior"></h3>
     <table>
       <tr>
-        <td><label for="InteriorTemperature">Temperature:</label></td>
+        <td><label for="InteriorTemperature" data-loc="temperature"></label>:</td>
         <td>
           <span id="InteriorTemperatureError" class="inputError">&#9447;</span>
           <input type="number" id="InteriorTemperature" /> &deg;C
         </td>
       </tr>
       <tr>
-        <td><label for="InteriorHumidity">Humidity:</label></td>
+        <td><label for="InteriorHumidity" data-loc="humidity"></label>:</td>
         <td>
           <span id="InteriorHumidityError" class="inputError">&#9447;</span>
           <input type="number" id="InteriorHumidity" /> %RH
         </td>
       </tr>
     </table>
-    <h3>Exterior</h3>
+    <h3 data-loc="exterior"></h3>
     <table>
       <tr>
-        <td><label for="ExteriorTemperature">Temperature:</label></td>
+        <td><label for="ExteriorTemperature" data-loc="temperature"></label>:</td>
         <td>
           <span id="ExteriorTemperatureError" class="inputError">&#9447;</span>
           <input type="number" id="ExteriorTemperature" /> &deg;C
         </td>
       </tr>
       <tr>
-        <td><label for="ExteriorHumidity">Humidity:</label></td>
+        <td><label for="ExteriorHumidity" data-loc="humidity"></label>:</td>
         <td>
           <span id="ExteriorHumidityError" class="inputError">&#9447;</span>
           <input type="number" id="ExteriorHumidity" required /> %RH

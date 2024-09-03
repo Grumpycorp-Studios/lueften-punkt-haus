@@ -50,17 +50,6 @@ h1 {
   margin-top: 0;
 }
 
-// Localization
-[lang] {
-  // Don't display localized content by default
-  display: none;
-}
-
-[lang="en"] {
-  // Display default language by defaut
-  display: unset;
-}
-
 // Input section
 .inputError {
   color: red;
